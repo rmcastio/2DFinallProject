@@ -147,11 +147,12 @@ public class Main
 		user.firstName = s1.next();
 		System.out.print("Enter Last Name: ");
 		user.lastName = s1.next();
-		System.out.println("Hello " + user.lastName + ", " + user.firstName);
 		System.out.print("Enter Gender: ");
 		user.gender = s1.next();
-		System.out.print("Enter BirthYear");
+		System.out.print("Enter BirthYear: ");
+		user.birthYear = s1.nextInt();
 
+		System.out.println("Hello " + user.lastName + ", " + user.firstName);
 		storedProfiles.add(user);
 	}
 
