@@ -50,12 +50,14 @@ public class Main
 			displayMenu();
 			option = userInput.next().charAt(0);
 
+
 			switch (option)
 			{
 				case '1': // Chose to make Profile
 					makeProfile(storedProfiles);
 					break;
 				case '2': //Edit Profile
+					editProfile();
 					break;
 				case '3': //Find a Date
 					break;
@@ -68,7 +70,6 @@ public class Main
 			System.out.println();
 			System.out.println();
 			System.out.println();
-			System.out.print(storedProfiles.get(0).firstName);
 			System.out.println("<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3");
 
 
@@ -92,6 +93,19 @@ public class Main
 	}
 
 
+	// Function to edit profile
+	public static void editProfile()
+	{
+		Scanner s1 = new Scanner(System.in);
+
+		System.out.println("Edit First Name? (1)");
+		System.out.println("Edit Last Name? (2)");
+		System.out.println("Exit");
+		System.out.println();
+		System.out.print("Your Selection: ");
+	}
+
+
 
 	//Displays form to create Create Profile
 	//and accepts user input
@@ -107,9 +121,9 @@ public class Main
 		System.out.println("Hello " + user.lastName + ", " + user.firstName);
 
 		storedProfiles.add(user);
-
-
 	}
+
+
 
 }
 
