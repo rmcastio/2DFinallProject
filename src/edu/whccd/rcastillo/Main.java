@@ -8,10 +8,7 @@ package edu.whccd.rcastillo;
 
 
 import java.util.Scanner;
-//import java.lang.System;
-//import java.lang.Runtime;
 import java.lang.*;
-import java.io.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
@@ -132,6 +129,7 @@ public class Main
 			}
 			else
 				System.out.println("<3 <3 <3 Invalid input! <3 <3 <3");
+			//add 10 questions to edit. No gender, birthdate.
 		}
 
 	}
@@ -150,6 +148,9 @@ public class Main
 		System.out.print("Enter Last Name: ");
 		user.lastName = s1.next();
 		System.out.println("Hello " + user.lastName + ", " + user.firstName);
+		System.out.print("Enter Gender: ");
+		user.gender = s1.next();
+		System.out.print("Enter BirthYear");
 
 		storedProfiles.add(user);
 	}
@@ -176,7 +177,7 @@ public class Main
 		int i = 0; // variable to iterate profiles.
 		while (!exitLove)
 		{
-			if (findGirls.size() < i)
+			if (findGirls.size() <= i)
 			{
 				i = 0;
 			}
@@ -191,12 +192,15 @@ public class Main
 				Swipe = s1.next().charAt(0);
 				if (Swipe == '1' )
 				{
-					System.out.print("New First Name: ");
-					//storedProfiles.get(0).firstName = s1.next();
+					i++;
 				}
 				else if (Swipe == '2')
 				{
-					System.out.print("New Last Name: ");
+					System.out.print("\n\n");
+					System.out.println("<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3");
+					System.out.println("<3 <3  Congratulations you matched with" + " " + findGirls.get(i).lastName + ", " + findGirls.get(i).firstName);
+					System.out.println("<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3");
+					exitLove = true;
 					//storedProfiles.get(0).lastName = s1.next();
 				}
 				else if (Swipe == '3')
@@ -216,4 +220,7 @@ class Profile
 {
 	String firstName = "";
 	String lastName = "";
+	String gender = "";
+	int birthYear = 0;
+	String[] profileQuest = new String[10];
 }
