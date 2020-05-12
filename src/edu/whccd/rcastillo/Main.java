@@ -8,6 +8,10 @@ package edu.whccd.rcastillo;
 
 
 import java.util.Scanner;
+//import java.lang.System;
+//import java.lang.Runtime;
+import java.lang.*;
+import java.io.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
@@ -21,14 +25,6 @@ public class Main
 {
 
 
-	public static void displayMenu()
-	{
-		System.out.println("Make a Profile (1)");
-		System.out.println("Edit Profile (2)");
-		System.out.println("Find a Date (3)");
-		System.out.print("Exit (4)");
-	}
-
 
 	public static void main(String[] args)
 	{
@@ -38,19 +34,42 @@ public class Main
 
 
 		// Title Screen
-		System.out.print("Welcome to the Binary love connection form.");
+		System.out.println("<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3");
+		System.out.print("     Welcome to the Binary love connection.");
 		System.out.println();
 		System.out.println("<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3");
 		System.out.println();
 
-		int option;
+		char option;
+		Scanner userInput = new Scanner(System.in);
+
+		ArrayList<Profile> storedProfiles = new ArrayList<Profile>();
 
 		while (!exitProgram) // Main Event Loop
 		{
 			displayMenu();
+			option = userInput.next().charAt(0);
 
-			makeProfile();
+			switch (option)
+			{
+				case '1': // Chose to make Profile
+					makeProfile(storedProfiles);
+					break;
+				case '2': //Edit Profile
+					break;
+				case '3': //Find a Date
+					break;
+				case '4': // exit
+					System.exit(0);
+					break;
+				default:
+			}
 
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.print(storedProfiles.get(0).firstName);
+			System.out.println("<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3");
 
 
 		}
@@ -60,7 +79,23 @@ public class Main
 
 	}
 
-	public static void makeProfile()
+
+	// Display Main Menu
+	public static void displayMenu()
+	{
+		System.out.println("Make a Profile Enter: (1)");
+		System.out.println("Edit Profile Enter: (2)");
+		System.out.println("Find a Date Enter: (3)");
+		System.out.println("Exit Enter: (4)");
+		System.out.println();
+		System.out.print("Your selection: ");
+	}
+
+
+
+	//Displays form to create Create Profile
+	//and accepts user input
+	public static void makeProfile(ArrayList<Profile> storedProfiles)
 	{
 		Profile user = new Profile();
 		Scanner s1 = new Scanner(System.in);
@@ -70,6 +105,10 @@ public class Main
 		System.out.print("Enter Last Name: ");
 		user.lastName = s1.next();
 		System.out.println("Hello " + user.lastName + ", " + user.firstName);
+
+		storedProfiles.add(user);
+
+
 	}
 
 }
