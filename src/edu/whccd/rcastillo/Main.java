@@ -43,6 +43,7 @@ public class Main
 		char option;
 		Scanner userInput = new Scanner(System.in);
 
+
 		ArrayList<Profile> storedProfiles = new ArrayList<Profile>();
 
 		while (!exitProgram) // Main Event Loop
@@ -57,9 +58,10 @@ public class Main
 					makeProfile(storedProfiles);
 					break;
 				case '2': //Edit Profile
-					editProfile();
+					editProfile(storedProfiles);
 					break;
 				case '3': //Find a Date
+					findLove();
 					break;
 				case '4': // exit
 					System.exit(0);
@@ -94,15 +96,44 @@ public class Main
 
 
 	// Function to edit profile
-	public static void editProfile()
+	public static void editProfile(ArrayList<Profile> storedProfiles)
 	{
-		Scanner s1 = new Scanner(System.in);
+		Boolean exitEdit = false;
 
-		System.out.println("Edit First Name? (1)");
-		System.out.println("Edit Last Name? (2)");
-		System.out.println("Exit");
-		System.out.println();
-		System.out.print("Your Selection: ");
+		char editProfile;
+		Scanner s1 = new Scanner(System.in);
+		while (!exitEdit)
+		{
+			System.out.println("Edit First Name? (1)");
+			System.out.println("Edit Last Name? (2)");
+			System.out.println("Exit (3)");
+			System.out.println();
+			System.out.print("Your Selection: ");
+
+			editProfile = s1.next().charAt(0);
+
+			if (editProfile == '1' && storedProfiles.size() != 0)
+			{
+				System.out.print("New First Name: ");
+				storedProfiles.get(0).firstName = s1.next();
+			}
+			else if (editProfile == '2' && storedProfiles.size() != 0)
+			{
+				System.out.print("New Last Name: ");
+				storedProfiles.get(0).lastName = s1.next();
+			}
+			else if (editProfile == '3')
+			{
+				exitEdit = true;
+			}
+			else if (storedProfiles.size() == 0)
+			{
+				System.out.println("<3 <3 <3 No Profiles are stored. <3 <3 <3");
+			}
+			else
+				System.out.println("<3 <3 <3 Invalid input! <3 <3 <3");
+		}
+
 	}
 
 
@@ -124,6 +155,60 @@ public class Main
 	}
 
 
+	public static void findLove() {
+		ArrayList<Profile> findGirls = new ArrayList<Profile>(); // Array List of Biological Women.
+
+		Profile user = new Profile();
+		user.firstName = "Patricia";
+		user.lastName = "Borba";
+		findGirls.add(user);
+
+		Profile user1 = new Profile();
+		user1.firstName = "Oprah";
+		user1.lastName = "Winphrey";
+		findGirls.add(user1);
+
+		Boolean exitLove = false;
+
+		char Swipe;
+		Scanner s1 = new Scanner(System.in);
+
+		int i = 0; // variable to iterate profiles.
+		while (!exitLove)
+		{
+			if (findGirls.size() < i)
+			{
+				i = 0;
+			}
+			else
+			{
+				System.out.println(findGirls.get(i).lastName + ", " + findGirls.get(i).firstName);
+				System.out.println("No (1)");
+				System.out.println("Yes (2)");
+				System.out.println("Exit (3)");
+				System.out.println();
+				System.out.print("Your Selection: ");
+				Swipe = s1.next().charAt(0);
+				if (Swipe == '1' )
+				{
+					System.out.print("New First Name: ");
+					//storedProfiles.get(0).firstName = s1.next();
+				}
+				else if (Swipe == '2')
+				{
+					System.out.print("New Last Name: ");
+					//storedProfiles.get(0).lastName = s1.next();
+				}
+				else if (Swipe == '3')
+				{
+					exitLove = true;
+				}
+			}
+
+
+		}
+
+	}
 
 }
 
