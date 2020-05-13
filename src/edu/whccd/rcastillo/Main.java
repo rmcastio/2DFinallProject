@@ -4,35 +4,20 @@ package edu.whccd.rcastillo;
     Author: Richard Castillo
  */
 
-
-
-
-import java.util.Scanner;
+import java.util.*;
 import java.lang.*;
-import java.util.Collections;
-import java.util.List;
-import java.util.ArrayList;
-
-
-
-
-
-
 public class Main
 {
 
 
-
 	public static void main(String[] args)
 	{
-
-
 		Boolean exitProgram = false; // Bool Variable to exit While Loop.
 
 
 		// Title Screen
 		System.out.println("<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3");
-		System.out.print("     Welcome to the Binary love connection.");
+		System.out.print("     Welcome to the Binary love connection for Men.");
 		System.out.println();
 		System.out.println("<3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3");
 		System.out.println();
@@ -40,14 +25,12 @@ public class Main
 		char option;
 		Scanner userInput = new Scanner(System.in);
 
-
 		ArrayList<Profile> storedProfiles = new ArrayList<Profile>();
 
 		while (!exitProgram) // Main Event Loop
 		{
 			displayMenu();
 			option = userInput.next().charAt(0);
-
 
 			switch (option)
 			{
@@ -73,10 +56,6 @@ public class Main
 
 
 		}
-
-
-
-
 	}
 
 
@@ -103,9 +82,14 @@ public class Main
 		{
 			System.out.println("Edit First Name? (1)");
 			System.out.println("Edit Last Name? (2)");
-			System.out.println("Exit (3)");
+			System.out.println("What makes you laugh? (3)");
+			System.out.println("What is your favorite vacation spot? (4)");
+			System.out.println("Who are the most important people in your life? (5)");
+			System.out.println("What do your Saturdays usually look like? (6)");
+			System.out.println("Do you read reviews, or just go with your gut? (7)");
+			System.out.println("Exit (X)");
 			System.out.println();
-			System.out.print("Your Selection: ");
+			System.out.print("Edit your Selection: ");
 
 			editProfile = s1.next().charAt(0);
 
@@ -119,7 +103,27 @@ public class Main
 				System.out.print("New Last Name: ");
 				storedProfiles.get(0).lastName = s1.next();
 			}
-			else if (editProfile == '3')
+			else if (editProfile == '3' && storedProfiles.size() != 0) {
+				System.out.print("Change: What is your favorite color?");
+				storedProfiles.get(0).questionLove[0] = s1.next();
+			}
+			else if (editProfile == '4' && storedProfiles.size() != 0) {
+				System.out.print("Change: What is your favorite vacation spot? ");
+				storedProfiles.get(0).questionLove[1] = s1.next();
+			}
+			else if (editProfile == '5' && storedProfiles.size() != 0) {
+				System.out.print("Change: What is your ideal first date? ");
+				storedProfiles.get(0).questionLove[2] = s1.next();
+			}
+			else if (editProfile == '6' && storedProfiles.size() != 0) {
+				System.out.print("Change: Who are the most important people in your life?  ");
+				storedProfiles.get(0).questionLove[3] = s1.next();
+			}
+			else if (editProfile == '7' && storedProfiles.size() != 0) {
+				System.out.print("Change: What makes you laugh? ");
+				storedProfiles.get(0).questionLove[4] = s1.next();
+			}
+			else if (editProfile == 'X')
 			{
 				exitEdit = true;
 			}
@@ -134,8 +138,6 @@ public class Main
 
 	}
 
-
-
 	//Displays form to create Create Profile
 	//and accepts user input
 	public static void makeProfile(ArrayList<Profile> storedProfiles)
@@ -144,15 +146,38 @@ public class Main
 		Scanner s1 = new Scanner(System.in);
 
 		System.out.print("Enter First Name: ");
-		user.firstName = s1.next();
+		user.firstName = s1.nextLine();
 		System.out.print("Enter Last Name: ");
-		user.lastName = s1.next();
+		user.lastName = s1.nextLine();
 		System.out.print("Enter Gender: ");
-		user.gender = s1.next();
+		user.gender = s1.nextLine();
 		System.out.print("Enter BirthYear: ");
 		user.birthYear = s1.nextInt();
 
+		String[] questionBank = new String[10];
+		questionBank[0] = "What is your favorite color? ";
+		questionBank[1] = "What is your favorite vacation spot? ";
+		questionBank[2] = "What is your ideal first date? ";
+		questionBank[3] = "Who are the most important people in your life? ";
+		questionBank[4] = "What makes you laugh? ";
+		questionBank[5] = "Do you have a dream you're pursuing? ";
+		questionBank[6] = "What do your Saturdays usually look like? ";
+		questionBank[7] = "Where did you grow up, and what was your family like? ";
+		questionBank[8] = "What's your big passion? ";
+		questionBank[9] = "Do you read reviews, or just go with your gut? ";
+
+
+		String fake = new String();
+		fake = s1.nextLine();
+		for (int i = 0; i <= questionBank.length - 1; i++)
+		{
+			System.out.println(questionBank[i]);
+			user.questionLove[i] = s1.nextLine();
+		}
+
 		System.out.println("Hello " + user.lastName + ", " + user.firstName);
+		System.out.println("You are " + user.gender + " and, born in " + user.birthYear);
+		//System.out.println(user.questionLove.length[i]);
 		storedProfiles.add(user);
 	}
 
@@ -223,5 +248,5 @@ class Profile
 	String lastName = "";
 	String gender = "";
 	int birthYear = 0;
-	String[] profileQuest = new String[10];
+	String[] questionLove = new String[10];
 }
